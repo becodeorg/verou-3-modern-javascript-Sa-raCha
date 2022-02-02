@@ -1,4 +1,4 @@
-import  Data  from "./config.js";
+import  Data  from "../config.js";
 import {createDay} from "./createDay.js";
 const submitButton = document.getElementById("submit")
 const submitInput = document.getElementById("cityInput");
