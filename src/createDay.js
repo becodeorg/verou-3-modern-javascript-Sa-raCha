@@ -1,11 +1,8 @@
+import { DateTime } from "luxon";
+
 const getNameDay = (weekDays) =>{
     const names = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
     return names[weekDays.getDay()]
-}
-
-const getNameMonth = (date) => {
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    return months[date.getMonth()]
 }
 
 const createDay = (weatherData,i) => {
@@ -27,14 +24,16 @@ const createDay = (weatherData,i) => {
     const dayName = document.createElement("h2")
     const date = document.createElement("h3");
 
+    let dt = DateTime.fromSeconds(unixtime);
+    let f = {month: 'long', day: 'numeric'};
+    let dtF = dt.setLocale('en-GB').toLocaleString(f)  
+    
     const dayInMonth = document.createElement("span")
-    const month = document.createElement("span")
-
-
+    dayInMonth.innerHTML = dtF
 
     dayName.innerText = getNameDay(daydate);
-    dayInMonth.innerText = daydate.getDate() ;
-    month.innerText = getNameMonth(daydate);
+    // dayInMonth.innerText = daydate.getDate() ;
+    // month.innerText = getNameMonth(daydate);
 
 
     const img = document.createElement("img");
@@ -51,6 +50,6 @@ const createDay = (weatherData,i) => {
     container.appendChild(section);
     section.append(header, img, desEl, tempP);
     header.append(dayName, date);
-    date.append(dayInMonth, month)
+    date.append(dayInMonth)
 }
 export {createDay}

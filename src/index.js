@@ -4,6 +4,7 @@ const submitButton = document.getElementById("submit")
 const submitInput = document.getElementById("cityInput");
 const container = document.getElementById("container");
 
+
 const getLatLong = () => {
     let userInput = submitInput.value
     container.innerHTML="";
@@ -48,7 +49,7 @@ submitInput.addEventListener("keydown", event => {
      }
 
 });
-
+createToday();
 
 
 
